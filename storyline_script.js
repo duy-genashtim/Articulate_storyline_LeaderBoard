@@ -21,9 +21,11 @@ if (window.XMLHttpRequest) {
 }
 // get time
 var timeU = player.GetVar('timeUsed');
-var timeInSeconds =  Math.floor(timeU / 1000); // Convert to seconds
+var timeInSeconds =  timeU / 1000;
+var timeInMin = timeInSeconds/60;
+var timeUsed = timeInMin.toFixed(2);
 
-xhttp.open("GET", sheetURL + "?id=" + userTag + "&score=" + userScore+ "&time=" + timeInSeconds, true);
+xhttp.open("GET", sheetURL + "?id=" + userTag + "&score=" + userScore+ "&time=" + timeUsed, true);
 xhttp.send();
 xhttp.onreadystatechange = function () {
     //If we get a successful reply from our spreadsheet:
